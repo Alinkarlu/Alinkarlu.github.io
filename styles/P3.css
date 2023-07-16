@@ -4,9 +4,25 @@ html,body {
   padding: 20px;
 }
 
-h1 {
-  text-align: center;
+li {
+  margin-bottom: 5px;
 }
+
+h1 {
+  font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 2px;
+  color: blue;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.popular {
+  border: 4px dotted red;
+  }
+
+.blue-text {
+  color: blue;
+  }
 
 .frame {
   background-color: #959595;
