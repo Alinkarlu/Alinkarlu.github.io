@@ -1,35 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Alinkar's Example Page</title>
-  <link rel="stylesheet" href="styles\P3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Number Finder</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<body> 
+  <script>
+    function isPositiveInteger(value) {
+      var number = parseInt(value);
+      return !isNaN(number) && number > 0;
+    }
 
-<body>
-  <div class="frame">
-    <h1>643040818-5</h1>
-    <div class="make-everything-center">
-      <figure>
-        <img src="images/kku.jpg" width="80%"
-        height="80%" alt="my test image">
-      </figure>
+    function isPrime(number) {
+      if (number <= 1) {
+        return false;
+      }
+      if (number <= 3) {
+        return true;
+      }
+      if (number % 2 === 0 || number % 3 === 0) {
+        return false;
+      }
+      for (var i = 5; i * i <= number; i += 6) {
+        if (number % i === 0 || number % (i + 2) === 0) {
+          return false;
+        }
+      }
+      return true;
+    }
 
-      <figure>
-        <img src="images/DME.jpeg" width="80%"
-        height="80%" alt="my test image 2">
-        <figcaption>Digital Media Engineering 2022</figcaption>
-      </figure>
-    </div>
+    function printPrimes() {
+      var primes = [];
 
-    <div>
-        <p class="blue-text">Khon Kaen University has many outstanding places</p>
-        <meta http-equiv="Content-Language" content="th" />
-        <ul>
-            <li class="popular">ศาลเจ้าพ่อมอดินแดง</li>
-            <li>พิพิธภัณฑ์ธรรมชาติวิทยา มข</li>
-            <li class="popular">อุโมงค์ต้นไม้</li>
-        </ul>
-        <p>Have you been in these places?If not,please do so.Please click <a href="https://www.kku.ac.th/" alt="Khon Kaen University">Khon Kaen University</a></p>
-    </div>
+      inputLoop: while (true) {
+        var input = prompt("Enter a positive integer:");
+
+        if (isPositiveInteger(input)) {
+          var number = parseInt(input);
+
+          for (var i = 2; i <= number; i++) {
+            if (isPrime(i)) {
+              primes.push(i);
+            }
+          }
+
+          alert("For n=" + number + " prime numbers are " + primes.join(", "));
+          break inputLoop;
+        } else {
+          alert("Please enter a valid positive integer.");
+        }
+      }
+    }
+
+    printPrimes(); 
+  </script>
+  <div id="centeredSentence"><b>Prime Numbers Finder!</b></div>
+  <p id="instructions">
+    <h1>Write the web app to prompt accepting for a positive integer number</h1><br>
+    <li>If the entered text is not a positive integer number, then the web app will keep asking for a number until the valid positive integer is entered</li><br>
+    <li>If the entered text is a positive integer, then the app will print prime numbers that are not greater than that given positive integer</li><br>
+    <h1>Hint:</h1><br>
+    1. You may want to use a loop with a label<br>
+    2. You may want to use an array with the push function
+  </p>
 </body>
 </html>
