@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  div {
+    background-color: blue;
+    height: 100px;
+    width: 25%;
+    margin: 5px 0px;
+    float: left;
+  }
+</style>
+<title>Color Changing Grids</title>
+</head>
+<body>
+  <script>
+    function random(number) {
+      return Math.floor(Math.random() * number);
+    }
+    
+    function bgChange() {
+      var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+      return rndCol;
+    }
+    
+    var divs = [];
+    var firstClickColor = bgChange(); // Generate the common color for first click
+
+    for (var i = 0; i < 16; i++) {
+      var MyDiv = document.createElement("div");
+      if (i % 4 === 0 || i % 4 === 2) {
+        MyDiv.addEventListener('click', function(e) {
+          e.target.style.backgroundColor = bgChange();
+        });
+      } else if (i % 4 === 1 || i % 4 === 3) {
+        MyDiv.addEventListener('click', function(e) {
+          if (!e.target.clicked) {
+            e.target.style.backgroundColor = firstClickColor;
+            e.target.clicked = true;
+          }
+        });
+      }
+      document.body.appendChild(MyDiv);
+      divs.push(MyDiv);
+    }
+  </script>
+</body>
+</html>
